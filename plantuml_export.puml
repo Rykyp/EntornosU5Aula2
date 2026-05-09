@@ -1,0 +1,32 @@
+@startuml
+interface IEntrevistable {
+    +RealizarDeclaraciones()
+}
+abstract class Jugador {
+    +nombre: String
+    +alias: String
+    +nivel: int
+}
+class Profesional {
+    +sueldo: double
+    +patrocinador: String
+    +RealizarDeclaraciones()
+}
+class Amateur {
+    +centroEstudios: String
+}
+class Equipo {
+    +nombre: String
+    +fechaFundacion: DateTime
+    +FicharJugador(j: Jugador)
+}
+class PerfilEstadisticas {
+    +partidasGanadas: int
+    +partidasPerdidas: int
+}
+Jugador <|-- Profesional
+Jugador <|-- Amateur
+IEntrevistable <|.. Profesional
+Equipo o-- Jugador
+Equipo *-- PerfilEstadisticas
+@enduml
